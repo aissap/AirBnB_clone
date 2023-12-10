@@ -7,8 +7,8 @@ class FileStorage:
     """Class for handling serialization and deserialization of objects."""
     def __init__(self):
         """Constructor for FileStorage."""
-    self.__file_path = "file.json"
-    self.__objects = {}
+        self.__file_path = "file.json"
+        self.__objects = {}
 
     def all(self):
         """Return a dictionary of objects, filtered by the provided class."""
@@ -32,8 +32,8 @@ class FileStorage:
             with open(self.__file_path, 'r') as file:
                 objects_json = json.loads(file.read())
                 for obj in objects_json.values():
-                    self.__objects[key] = obj
                     key = "{}.{}".format(obj["__class__"], obj["id"])
+                    self.__objects[key] = obj
         except FileNotFoundError:
             pass
 

@@ -14,4 +14,5 @@ from models.engine.file_storage import FileStorage
 storage = FileStorage()
 storage.reload()
 
-my_models = ["BaseModel", "User", "Amenity", "City", "Place", "Review", "State", "User"]
+my_models = ["BaseModel", "User", "Amenity", "City",
+             "Place", "Review", "State", "User"]
