@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import cmd
+import re
 from models import BaseModel, User, Amenity, City, Place, Review, State
 from models import storage, my_models
 
@@ -94,6 +95,21 @@ class HBNBCommand(cmd.Cmd):
             for key, value in storage.all().items():
                 print(value)
 
+    def do_count(self, arg):
+        """All command will list all the models based on a given class"""
+        counter = 0
+        if arg:
+            if arg not in my_models:
+                print("** class doesn't exist **")
+            else:
+                for key, value in storage.all().items():
+                    if value['__class__'] == arg:
+                        counter = counter + 1
+        else:
+            for key, value in storage.all().items():
+                counter = counter + 1
+        print(counter)
+
     def do_update(self, arg):
         """Updates an instance based on the class name and id by adding"""
         if not arg:
@@ -130,6 +146,25 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
                 storage.reload()
                 return
+
+    def default(self, arg):
+        """If the method is invalid. try to look by class."""
+        commands = {
+            "all": self.do_all,
+            "count": self.do_count,
+        }
+        if "." in arg:
+            s = re.search(r"\.", arg)
+            if s is not None:
+                args = [arg[:s.span()[0]], arg[s.span()[1]:]]
+                search = re.search(r"\((.*?)\)", args[1])
+                if s is not None:
+                    command = [args[1][:s.span()[0]], s.group()[1:-1]]
+                    if command[0] in commands.keys():
+                        method_args = "{} {}".format(args[0], command[1])
+                        return commands[command[0]](method_args)
+
+        return
 
 
 if __name__ == "__main__":
