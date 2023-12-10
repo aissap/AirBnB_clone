@@ -152,17 +152,21 @@ class HBNBCommand(cmd.Cmd):
         commands = {
             "all": self.do_all,
             "count": self.do_count,
+            "show": self.do_show,
+            "update": self.do_update,
+            "destroy": self.do_destroy
         }
         if "." in arg:
             s = re.search(r"\.", arg)
             if s is not None:
                 args = [arg[:s.span()[0]], arg[s.span()[1]:]]
-                search = re.search(r"\((.*?)\)", args[1])
+                s = re.search(r"\((.*?)\)", args[1])
                 if s is not None:
                     command = [args[1][:s.span()[0]], s.group()[1:-1]]
+                    a = "{} {}".format(args[0], command[1])
+                    a = a.replace(",", "").strip()
                     if command[0] in commands.keys():
-                        method_args = "{} {}".format(args[0], command[1])
-                        return commands[command[0]](method_args)
+                        return commands[command[0]](a)
 
         return
 
