@@ -64,6 +64,9 @@ class TestCity(unittest.TestCase):
         self.assertIn('name', city_dict)
         self.assertIn('__class__', city_dict)
 
+        self.assertIsInstance(city_dict['created_at'], str)
+        self.assertIsInstance(city_dict['updated_at'], str)
+
     def test_save_method(self):
         """Test City save method"""
         city = City()
