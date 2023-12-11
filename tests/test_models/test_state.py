@@ -35,17 +35,17 @@ class TestState(unittest.TestCase):
 
     def test_state_initialization(self):
         """Test State initialization"""
-        state = State(name="California")
-        self.assertEqual(state.name, "California")
+        state = State(name="Casa")
+        self.assertEqual(state.name, "Casa")
 
     def test_str_representation(self):
         """Test State __str__ representation"""
         state = State()
-        state.id = "123456"
+        state.id = "1133456"
         state.created_at = state.updated_at = datetime.today()
         state_str = str(state)
-        self.assertIn("[State] (123456)", state_str)
-        self.assertIn("'id': '123456'", state_str)
+        self.assertIn("[State] (1133456)", state_str)
+        self.assertIn("'id': '1133456'", state_str)
         self.assertIn("'created_at':", state_str)
         self.assertIn("'updated_at':", state_str)
 

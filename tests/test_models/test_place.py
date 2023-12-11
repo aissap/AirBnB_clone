@@ -55,19 +55,19 @@ class TestPlace(unittest.TestCase):
 
     def test_place_initialization(self):
         """Test Place initialization"""
-        place = Place(city="San Francisco", user_id="123", name="Cozy Apartment")
-        self.assertEqual(place.city, "San Francisco")
+        place = Place(city="Casa Blanca", user_id="123", name="Cozy Apartment")
+        self.assertEqual(place.city, "Casa Blanca")
         self.assertEqual(place.user_id, "123")
         self.assertEqual(place.name, "Cozy Apartment")
 
     def test_str_representation(self):
         """Test Place __str__ representation"""
         place = Place()
-        place.id = "123456"
+        place.id = "1133456"
         place.created_at = place.updated_at = datetime.today()
         place_str = str(place)
-        self.assertIn("[Place] (123456)", place_str)
-        self.assertIn("'id': '123456'", place_str)
+        self.assertIn("[Place] (113456)", place_str)
+        self.assertIn("'id': '1133456'", place_str)
         self.assertIn("'created_at':", place_str)
         self.assertIn("'updated_at':", place_str)
 

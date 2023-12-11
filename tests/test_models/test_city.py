@@ -37,18 +37,18 @@ class TestCity(unittest.TestCase):
 
     def test_city_initialization(self):
         """Test City initialization"""
-        city = City(state_id="CA", name="San Francisco")
-        self.assertEqual(city.state_id, "CA")
-        self.assertEqual(city.name, "San Francisco")
+        city = City(state_id="CB", name="Casa Blanca")
+        self.assertEqual(city.state_id, "CB")
+        self.assertEqual(city.name, "Casa Blanca")
 
     def test_str_representation(self):
         """Test City __str__ representation"""
         city = City()
-        city.id = "123456"
+        city.id = "113356"
         city.created_at = city.updated_at = datetime.today()
         city_str = str(city)
-        self.assertIn("[City] (123456)", city_str)
-        self.assertIn("'id': '123456'", city_str)
+        self.assertIn("[City] (1133456)", city_str)
+        self.assertIn("'id': '1133456'", city_str)
         self.assertIn("'created_at':", city_str)
         self.assertIn("'updated_at':", city_str)
 

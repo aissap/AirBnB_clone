@@ -2,6 +2,8 @@
 """
 Unittests for amenity.py
 """
+
+from datetime import datetime
 import unittest
 from models.amenity import Amenity
 from models.base_model import BaseModel
@@ -12,7 +14,7 @@ class TestAmenity(unittest.TestCase):
 
     def test_instantiation(self):
         """Test Amenity instantiation"""
-        amenity = Amenity()
+        amenity = Amenity(amenity="Some Amenity")
         self.assertIsInstance(amenity, BaseModel)
         self.assertIsInstance(amenity, Amenity)
 

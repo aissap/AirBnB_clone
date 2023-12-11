@@ -47,11 +47,11 @@ class TestReview(unittest.TestCase):
     def test_str_representation(self):
         """Test Review __str__ representation"""
         review = Review()
-        review.id = "123456"
+        review.id = "1133456"
         review.created_at = review.updated_at = datetime.today()
         review_str = str(review)
-        self.assertIn("[Review] (123456)", review_str)
-        self.assertIn("'id': '123456'", review_str)
+        self.assertIn("[Review] (1133456)", review_str)
+        self.assertIn("'id': '1133456'", review_str)
         self.assertIn("'created_at':", review_str)
         self.assertIn("'updated_at':", review_str)
 
