@@ -13,9 +13,11 @@ class BaseModel:
         if kwargs:
             dict_copy = kwargs.copy()
             if 'created_at' in dict_copy:
-                dict_copy['created_at'] = datetime.strptime(dict_copy['created_at'], df)
+                dict_copy['created_at'] = datetime. \
+                            strptime(dict_copy['created_at'], df)
             if 'updated_at' in dict_copy:
-                dict_copy['updated_at'] = datetime.strptime(dict_copy['updated_at'], df)
+                dict_copy['updated_at'] = datetime. \
+                            strptime(dict_copy['updated_at'], df)
             self.__dict__ = dict_copy
         else:
             self.id = str(uuid4())

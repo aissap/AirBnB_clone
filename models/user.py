@@ -4,6 +4,7 @@ User class module
 """
 from models.base_model import BaseModel
 
+
 class User(BaseModel):
     """User class"""
     def __init__(self, *args, **kwargs):
