@@ -13,7 +13,11 @@ class TestCity(unittest.TestCase):
 
     def test_instantiation(self):
         """Test City instantiation"""
-        city = City(state_id="CB", name="Casa Blanca", created_at=datetime.now())
+        city = City(
+                state_id="CB",
+                name="Casa Blanca",
+                created_at=datetime.now()
+                )
         self.assertIsInstance(city, BaseModel)
         self.assertIsInstance(city, City)
 
@@ -62,8 +66,14 @@ class TestCity(unittest.TestCase):
             self.assertIn(key, city_dict)
 
         date_format = "%Y-%m-%dT%H:%M:%S.%f"
-        self.assertEqual(city.created_at.strftime(date_format), city_dict['created_at'])
-        self.assertEqual(city.updated_at.strftime(date_format), city_dict['updated_at'])
+        self.assertEqual(
+                city.created_at.strftime(date_format),
+                city_dict['created_at']
+                )
+        self.assertEqual(
+                city.updated_at.strftime(date_format),
+                city_dict['updated_at']
+                )
 
     def test_save_method(self):
         """Test City save method"""
