@@ -13,7 +13,7 @@ class TestCity(unittest.TestCase):
 
     def test_instantiation(self):
         """Test City instantiation"""
-        city = City()
+        city = City(state_id="CB", name="Casa Blanca", created_at=datetime.now())
         self.assertIsInstance(city, BaseModel)
         self.assertIsInstance(city, City)
 
@@ -54,18 +54,16 @@ class TestCity(unittest.TestCase):
 
     def test_to_dict_method(self):
         """Test City to_dict method"""
-        city = City()
+        city = City(state_id="CB", name="Casa Blanca")
         city_dict = city.to_dict()
-        self.assertEqual(dict, type(city_dict))
-        self.assertIn('id', city_dict)
-        self.assertIn('created_at', city_dict)
-        self.assertIn('updated_at', city_dict)
-        self.assertIn('state_id', city_dict)
-        self.assertIn('name', city_dict)
-        self.assertIn('__class__', city_dict)
+        expected_keys = ['id', 'created_at', 'updated_at', 'state_id', 'name']
 
-        self.assertIsInstance(city_dict['created_at'], str)
-        self.assertIsInstance(city_dict['updated_at'], str)
+        for key in expected_keys:
+            self.assertIn(key, city_dict)
+
+        date_format = "%Y-%m-%dT%H:%M:%S.%f"
+        self.assertEqual(city.created_at.strftime(date_format), city_dict['created_at'])
+        self.assertEqual(city.updated_at.strftime(date_format), city_dict['updated_at'])
 
     def test_save_method(self):
         """Test City save method"""

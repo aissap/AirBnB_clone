@@ -8,13 +8,15 @@ import models
 class BaseModel:
     """ defines all common attributes/methods for other classes """
 
-    def __init__(self, **wkargs):
+    def __init__(self, **kwargs):
         df = '%Y-%m-%dT%H:%M:%S.%f'
-        if wkargs:
-            dict = wkargs.copy()
-            dict['created_at'] = datetime.strptime(dict['created_at'], df)
-            dict['updated_at'] = datetime.strptime(dict['updated_at'], df)
-            self._dict_ = dict
+        if kwargs:
+            dict_copy = kwargs.copy()
+            if 'created_at' in dict_copy:
+                dict_copy['created_at'] = datetime.strptime(dict_copy['created_at'], df)
+            if 'updated_at' in dict_copy:
+                dict_copy['updated_at'] = datetime.strptime(dict_copy['updated_at'], df)
+            self.__dict__ = dict_copy
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()

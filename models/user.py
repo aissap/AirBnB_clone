@@ -1,16 +1,15 @@
 #!/usr/bin/python3
+"""
+User class module
+"""
 from models.base_model import BaseModel
-""" Defines 'user' class"""
-
 
 class User(BaseModel):
-    """Attributes that represents the user:
-            first_name(str): the user's first name.
-            last_name(str): the user's last name.
-            email(str): the user's email.
-            password: the user's password.
-    """
-    first_name = ""
-    last_name = ""
-    email = ""
-    password = ""
+    """User class"""
+    def __init__(self, *args, **kwargs):
+        """Initialization of the User class"""
+        super().__init__(*args, **kwargs)
+        self.first_name = ""
+        self.last_name = ""
+        self.email = ""
+        self.password = ""
